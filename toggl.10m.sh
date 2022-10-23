@@ -10,7 +10,7 @@ export PATH='/bin:/usr/local/bin:/usr/bin:/opt/homebrew/bin:$PATH'
 workspaces=(2838545 6790797)
 
 # Specifies previous Monday, can be changed to Sunday if you prefer
-start_date=$(date -v Monday +"%Y"-"%m"-"%d")
+start_date=$(date -v -Monday +"%Y"-"%m"-"%d")
 
 # Loop over all workspaces in workspaces array, summing total seconds.
 # Curl uses login credentials stored in ~/.netrc, see repo for an example.
@@ -24,4 +24,9 @@ do
 done
 
 # Print total seconds as hours.
-echo "$((($total_seconds)/3600))h";
+if [[ $total_seconds == 0 ]]
+then
+ echo "0h";
+else
+ echo "$((($total_seconds)/3600))h";
+fi
