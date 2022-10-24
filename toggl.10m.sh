@@ -38,5 +38,5 @@ if [[ $total_seconds == 0 ]]
 then
  echo "0h";
 else
- echo "$((($total_seconds)/3600))h";
+ awk  'BEGIN { rounded = sprintf("%.0f", "'"$total_seconds"'"/3600); hours = "h"; result = rounded hours; print result }'
 fi
