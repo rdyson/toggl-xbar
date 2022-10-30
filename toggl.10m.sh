@@ -18,10 +18,13 @@ start_date=$(date -v -${VAR_WEEK_START_DAY} +"%Y"-"%m"-"%d")
 # Get the "tracked_seconds" value from the curl response and remove brackets and padding.
 for workspace in ${VAR_WORKSPACES[@]}
 do
-  workspace_seconds=$(curl -s -X POST https://api.track.toggl.com/reports/api/v3/workspace/"$workspace"/projects/summary \
-  -H "Content-Type: application/json" \
-  -d '{"start_date":"'"$start_date"'"}' \
-  -n | jq -c '[.[].tracked_seconds'] | sed 's/\[//' | sed 's/\]//' | sed 's/,/+/g')
+  workspace_seconds=$(curl \
+    -u ${VAR_TOGGL_API_KEY}:api_token \
+    -s \
+    -X POST https://api.track.toggl.com/reports/api/v3/workspace/"$workspace"/projects/summary \
+    -H "Content-Type: application/json" \
+    -d '{"start_date":"'"$start_date"'"}' \
+    | jq -c '[.[].tracked_seconds'] | sed 's/\[//' | sed 's/\]//' | sed 's/,/+/g')
 
   # If workspace_seconds is blank, set to 0.
   if [ ! "$workspace_seconds" ]
