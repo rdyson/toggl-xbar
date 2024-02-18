@@ -7,9 +7,10 @@ export PATH='/bin:/usr/local/bin:/usr/bin:/opt/homebrew/bin:$PATH'
 #  <xbar.author>Rob Dyson</xbar.author>
 #  <xbar.author.github>rdyson</xbar.author.github>
 #  <xbar.desc>Displays current week's total time logged in Toggl for one or more workspaces</xbar.desc>
+#  <xbar.dependencies>jq</xbar.dependencies>
 #  <xbar.var>string(VAR_WORKSPACES): Workspace ID(s). Separate multiple IDs with a space.</xbar.var>
 #  <xbar.var>string(VAR_TOGGL_API_KEY): Toggl API Key.</xbar.var>
-#  <xbar.var>select(VAR_WEEK_START_DAY="Monday"): Week starts on [Monday, Sunday]</xbar.var>
+#  <xbar.var>select(VAR_WEEK_START_DAY="Sunday"): Week starts on [Monday, Sunday]</xbar.var>
 
 # Specifies previous Monday, can be changed to Sunday if you prefer.
 start_date=$(date -v -${VAR_WEEK_START_DAY} +"%Y"-"%m"-"%d")
@@ -30,8 +31,8 @@ do
   if [ ! "$workspace_seconds" ]
   then
    workspace_seconds=0
-  fi 
- 
+  fi
+
   # Add workspace_seconds to total_seconds.
   total_seconds=$(($total_seconds+$workspace_seconds))
 done
