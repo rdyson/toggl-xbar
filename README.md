@@ -28,3 +28,5 @@ The setup steps will walk you through setting these up if you don't already have
 8. Enter a Toggl API key by navigating to https://track.toggl.com/profile and finding the API token section at the bottom of the page.
 9. Optionally, change the "Week start day".
 10. Refresh the plugin by clicking on the refresh icon at the top of the plugin dialog, or by clicking on the xbar icon and then xbar > Refresh.
+
+The plugin will automatically refresh every 10 minutes, which is configurable by changing the plugin filename.
