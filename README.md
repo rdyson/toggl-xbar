@@ -2,7 +2,9 @@
 
 Show how many hours you've logged in [Toggl](https://toggl.com) for the current week in the macOS toolbar using [xbar](https://xbarapp.com).
 
-![screenshot-toolbar](https://github.com/rdyson/toggl-xbar/assets/360430/7db37a69-f8a2-4087-93b4-d88e24eaaba5)
+![screenshot-toolbar](https://github.com/rdyson/toggl-xbar/blob/main/screenshot.png?raw=true)
+
+Thanks Pawel and Shep for the idea and code to change the color of hours as you approach your limit, and for adding minutes count.
 
 ## Background
 
